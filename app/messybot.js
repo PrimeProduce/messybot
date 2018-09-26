@@ -35,9 +35,6 @@ console.log("= adding banter - general slack convo");
 console.log("= adding zwave - controlling zwave nodes with Slack messages");
 (require('./behavior/zwave'))(config, abilities);
 
-console.log("= adding webroutes - adding routes to the express server");
-(require('./behavior/webroutes'))(config, abilities);
-
 console.log("= adding qrswitches - the ability to use scanned QR codes/urls to activate light switches");
 (require('./behavior/qrswitches'))(config, abilities);
 
