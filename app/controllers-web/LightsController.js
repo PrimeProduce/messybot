@@ -1,4 +1,4 @@
-
+const LightsView = require("../views/LightsView");
 
 module.exports = class LightsController {
 
@@ -26,6 +26,10 @@ module.exports = class LightsController {
       console.log(err);
       res.send("<h1>Failed :(</h1>");
     });
+  }
+
+  website(req, res){
+    res.send( LightsView() )
   }
 
 

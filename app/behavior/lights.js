@@ -2,7 +2,10 @@
 const GROUPS = {
   "ZW_Kitchen_Cans": [
     "ZW026_1","ZW027_1"
-  ]
+  ],
+ "ZW_1F_Fluorescent": [
+   "16433"
+ ]
 }
 
 

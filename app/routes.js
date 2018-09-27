@@ -10,5 +10,9 @@ module.exports = [
     path: '/lights/:nodeId/:cmd',
     controller: LightsController,
     handler: "command"
+  },{
+    path: '/lights',
+    controller: LightsController,
+    handler: "website"
   }
 ];

@@ -23,6 +23,7 @@
     "beepbeep": "^1.2.2",
     "botkit": "^0.6.7",
     "express": "^4.16.3",
+    "htmlencode": "0.0.4",
     "isy-js": "^0.4.5",
     "jquery": "^3.2.1",
     "lodash": "^4.17.4",

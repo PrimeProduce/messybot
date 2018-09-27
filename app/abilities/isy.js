@@ -15,18 +15,23 @@ class isy {
     request({
       url: url + path,
     }, function (error, response, body) {
-      if (response.statusCode == 200) {
-        xml2js.parseString(body, function (err, json) {
-          callback(false, json);
-        });
-      } else if( response.statusCode == 404) {
-        console.error("404 Not Found: "+url+path)
-        callback(true, {});
+      if( response ){
+        if (response.statusCode == 200) {
+          xml2js.parseString(body, function (err, json) {
+            callback(false, json);
+          });
+        } else if( response.statusCode == 404) {
+          console.error("404 Not Found: "+url+path)
+          callback(true, {});
+        } else {
+          console.error("Unhandled Response Code: "+response.statusCode);
+          callback(true, {});
+        }
       } else if(error){
         console.error(error);
         callback(true, {});
       } else {
-        console.error("Unhandled Response Code: "+response.statusCode);
+        console.error("No Response, No Error");
         callback(true, {});
       }
     });
