@@ -1,12 +1,10 @@
-
+var Botkit = require('botkit');
 
 
 class slack {
 
   constructor(config) {
    // CONNECT SLACK
-    var Botkit = require('botkit');
-
     this.controller = Botkit.slackbot();
     this.bot = this.controller.spawn({
         token: config.slack.api_token
@@ -26,6 +24,9 @@ class slack {
 
 	start_rtm() {
 		var self = this;
+    if( !this.bot ){
+      return;
+    }
     this.bot.startRTM(function(err,bot,payload) {
 			if (err) {
 					console.log('Failed to start RTM')
@@ -38,4 +39,3 @@ class slack {
 }
 
 module.exports = slack;
-

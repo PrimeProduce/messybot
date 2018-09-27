@@ -15,13 +15,19 @@ class isy {
     request({
       url: url + path,
     }, function (error, response, body) {
-      if(error || response.statusCode == 404) {
-        callback(true, {});
-      }
-      if (!error && response.statusCode == 200) {
+      if (response.statusCode == 200) {
         xml2js.parseString(body, function (err, json) {
           callback(false, json);
         });
+      } else if( response.statusCode == 404) {
+        console.error("404 Not Found: "+url+path)
+        callback(true, {});
+      } else if(error){
+        console.error(error);
+        callback(true, {});
+      } else {
+        console.error("Unhandled Response Code: "+response.statusCode);
+        callback(true, {});
       }
     });
   }

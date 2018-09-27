@@ -22,15 +22,13 @@
     "axios": "^0.18.0",
     "beepbeep": "^1.2.2",
     "botkit": "^0.6.7",
-    "dmx": "^0.1.1",
+    "express": "^4.16.3",
     "isy-js": "^0.4.5",
     "jquery": "^3.2.1",
     "lodash": "^4.17.4",
     "node-cmd": "^3.0.0",
     "node-omxplayer": "^0.6.1",
-    "openzwave-shared": "^1.4.1",
     "request": "^2.83.0",
-    "telnet-client": "^0.15.5",
     "xml2js": "^0.4.19",
     "youtube-dl": "^1.12.2"
   }
