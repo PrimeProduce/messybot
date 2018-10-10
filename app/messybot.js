@@ -49,4 +49,4 @@ webserver.listen(config.webserver.port, function() {
 
 
 // Slack Controllers
-slackindex.initialize(behaviors, abilities.slack);
+slackindex(behaviors, abilities.slack);

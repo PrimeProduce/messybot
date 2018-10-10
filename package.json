@@ -30,6 +30,7 @@
     "node-cmd": "^3.0.0",
     "node-omxplayer": "^0.6.1",
     "request": "^2.83.0",
+    "telnet-client": "^0.16.1",
     "xml2js": "^0.4.19",
     "youtube-dl": "^1.12.2"
   }

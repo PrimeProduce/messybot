@@ -1,5 +1,5 @@
 var LightsController = require('./LightsController');
-var RooftopController = require('./RooftopController');
+var WeatherController = require('./WeatherController');
 
 
 module.exports = [
@@ -17,15 +17,15 @@ module.exports = [
     controller: LightsController,
     handler: "website"
   },
-  
+
   // Roof
   {
-    path: '/roof/update',
-    controller: RooftopController,
+    path: '/weather/update',
+    controller: WeatherController,
     handler: "update"
   },{
-    path: '/roof',
-    controller: RooftopController,
+    path: '/weather',
+    controller: WeatherController,
     handler: "website"
   }
 ];

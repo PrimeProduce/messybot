@@ -7,7 +7,7 @@ module.exports = class WeatherController {
   }
 
   update(req, res) {
-    this.weather.update().then( function(d){
+    return this.weather.update().then( function(d){
       res.json(d);
     }, function(err){
       console.log(err);
@@ -16,7 +16,9 @@ module.exports = class WeatherController {
   }
 
   website(req, res){
-    res.send( WeatherView(d) );
+    return this.weather.update().then( function(d){
+      res.send( WeatherView(d) );
+    });
   }
 
 

@@ -1,16 +1,19 @@
 const htmlEncode = require('htmlencode').htmlEncode;
 
-module.exports = function(style, script, body){
+module.exports = function(pieces){
   return `<html>
     <head>
       <style type="text/css">
-        ${ style }
+        ${ pieces.style || '' }
       </style>
+      ${ pieces.headextra || '' }
     </head>
     <body>
-      ${ body }
+      ${ pieces.body || '' }
       <script type="text/javascript">
-        ${ script }
+        window.onload = function(){
+          ${ pieces.loadscript || '' }
+        };
       </script>
     </body>
   </html>`;

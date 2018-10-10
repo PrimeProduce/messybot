@@ -6,7 +6,7 @@ module.exports = class Weather{
   }
 
   update(){
-    return new Promise( function(resolve, reject){
+    return new Promise( (resolve, reject) => {
       this.ambientweather.get_weather_slow( function(err, d){
         if( err ){
           reject(err);
