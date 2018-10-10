@@ -17,10 +17,10 @@ var abilities = {
 
 console.log("=== ADDING BEHAVIORS");
 var behaviors = {
+  weather:                new (require('./behavior/weather'))(config, abilities),
   lights:                 new (require('./behavior/lights'))(config, abilities),
   banter:                 (require('./behavior/banter'))(config, abilities),
 //  zwave:                  (require('./behavior/zwave'))(config, abilities),
-//  ask_about_the_weather:  (require('./behavior/ask_about_the_weather'))(config, abilities),
   coolmasternet:          (require('./behavior/slack_control_coolmasternet'))(config, abilities)
 };
 
@@ -49,4 +49,4 @@ webserver.listen(config.webserver.port, function() {
 
 
 // Slack Controllers
-slackindex.initialize();
+slackindex.initialize(behaviors, abilities.slack);
