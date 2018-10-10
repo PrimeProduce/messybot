@@ -2,7 +2,8 @@ var express = require('express');
 var bodyParser = require('body-parser');
 
 var config = require('./config/config');
-var routes = require('./routes');
+var webroutes = require('./controllers-web/web-routes');
+var slackindex = require('./controllers-slack/slack-index');
 
 
 
@@ -19,7 +20,7 @@ var behaviors = {
   lights:                 new (require('./behavior/lights'))(config, abilities),
   banter:                 (require('./behavior/banter'))(config, abilities),
 //  zwave:                  (require('./behavior/zwave'))(config, abilities),
-  ask_about_the_weather:  (require('./behavior/ask_about_the_weather'))(config, abilities),
+//  ask_about_the_weather:  (require('./behavior/ask_about_the_weather'))(config, abilities),
   coolmasternet:          (require('./behavior/slack_control_coolmasternet'))(config, abilities)
 };
 
@@ -28,6 +29,7 @@ var behaviors = {
 console.log("= RUNNING!");
 
 
+// Web Controllers
 console.log("Setting Up Web Server");
 var webserver = express();
 // Parse request bodies
@@ -35,7 +37,7 @@ webserver.use(bodyParser.json());
 webserver.use(bodyParser.urlencoded({ extended: true }));
 // Setup a static directory 'public', totally optional
 webserver.use(express.static('app/public'));
-routes.forEach(function(route){
+webroutes.forEach(function(route){
   let controller = new route.controller(behaviors)
   webserver.use(route.path, controller[route.handler].bind(controller));
 });
@@ -44,3 +46,7 @@ webserver.on('error', console.log);
 webserver.listen(config.webserver.port, function() {
   console.log('Express webserver configured and listening!');
 });
+
+
+// Slack Controllers
+slackindex.initialize();

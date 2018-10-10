@@ -1,4 +1,4 @@
-var LightsController = require('./controllers-web/LightsController');
+var LightsController = require('./LightsController');
 
 
 module.exports = [
