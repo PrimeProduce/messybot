@@ -11,7 +11,7 @@ module.exports = class WeatherController {
       res.json(d);
     }, function(err){
       console.log(err);
-      res.send("<h1>Failed :(</h1>");
+      res.json({});
     });
   }
 

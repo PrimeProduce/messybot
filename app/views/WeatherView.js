@@ -31,37 +31,10 @@ module.exports = function(d){
     headextra: `
       <script src='https://api.mapbox.com/mapbox-gl-js/v0.49.0/mapbox-gl.js'></script>
       <link href='https://api.mapbox.com/mapbox-gl-js/v0.49.0/mapbox-gl.css' rel='stylesheet' />
+      <script src='/public/weather/flux-footprint.js'></script>
     `,
     loadscript: `
-      var mapEl = document.getElementById('map');
-      mapEl.style.width = document.documentElement.innerWidth;
-      mapEl.style.height = document.documentElement.innerHeight;
-      // this page is meant to be used in a fullscreen browser in the front of 424
-
-      mapboxgl.accessToken = 'pk.eyJ1IjoibWllbmFpa29lIiwiYSI6ImNpZzZxMGNidjVtNDZ0NW0zd21xc20yMTEifQ.Yz9I2vVWcteSI_lBMgu2HA';
-      var map = new mapboxgl.Map({
-        container: 'map',
-        style: 'mapbox://styles/mapbox/streets-v10',
-        zoom: 15,
-        center: [-73.9883696, 40.7663304]
-      });
-
-      map.on('load', function () {
-        // use weather data to model an absorption shape
-      });
-
-      setInterval( function(){
-        var oReq = new XMLHttpRequest();
-        oReq.addEventListener('load', function(ev){
-          if( this.readyState = this.DONE ){
-            var data = JSON.parse(this.response);
-            document.getElementById("temp").innerText = data.tempf;
-            document.getElementById("hum").innerText = data.humidity;
-          }
-        });
-        oReq.open('GET', '/weather/update');
-        oReq.send();
-      }, 60000);
+      FluxFootprint.initialize('map');
     `,
     body: `
       <div id='map'></div>

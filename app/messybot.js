@@ -36,7 +36,7 @@ var webserver = express();
 webserver.use(bodyParser.json());
 webserver.use(bodyParser.urlencoded({ extended: true }));
 // Setup a static directory 'public', totally optional
-webserver.use(express.static('app/public'));
+webserver.use('/public', express.static('app/public'));
 webroutes.forEach(function(route){
   let controller = new route.controller(behaviors)
   webserver.use(route.path, controller[route.handler].bind(controller));
